@@ -1,7 +1,7 @@
-; Programa para realizar operaciones aritméticas (+, -, x, /) entre dos números enteros positivos
+; Programa para realizar operaciones aritméticas (+, -, x, /) entre dos numeros enteros positivos
 org 100h ; Inicio del programa
 
-include 'emu8086.inc' ; Inclusión de funciones de la librería emu8086
+include 'emu8086.inc' ; Inclusion de funciones de la libreria emu8086
 DEFINE_SCAN_NUM
 DEFINE_PRINT_STRING
 DEFINE_PRINT_NUM
@@ -9,32 +9,32 @@ DEFINE_PRINT_NUM_UNS
 
 jmp inicio ; Salto a la etiqueta inicio
 
-; Declaración de mensajes
-texto db 13, 10, 'Fundacion Universitaria San Martin'
-db 13, 10, 'Lenguaje de maquina '
+; Declaracion de mensajes
+texto db 13, 10, 
+db 13, 10, 
 db 13, 10, 13, 10, 'Digite el Primer Numero: $'
 texto2 db 13, 10, 13, 10, 'Digite el Segundo Numero: $'
 texto3 db 13, 10, 13, 10, 'La Suma Es: $'
 texto4 db 13, 10, 'La Resta Es: $'
-texto5 db 13, 10, 'La Multiplicación Es: $'
-texto6 db 13, 10, 'La División es: $'
+texto5 db 13, 10, 'La Multiplicacion Es: $'
+texto6 db 13, 10, 'La Division es: $'
 
-num1 dw ? ; Declaración de variables de 2 bytes
+num1 dw ? ; Declaracion de variables de 2 bytes
 num2 dw ? ; El símbolo "?" indica que no se inicializan con valor alguno
 
 inicio:
 mov ah, 09 ; Imprime en pantalla
 lea dx, texto ; Carga la cadena de texto 1 en dx
-int 21h ; Interrupción de pantalla
+int 21h ; Interrupcion de pantalla
 
-call SCAN_NUM ; Llama a la función SCAN_NUM que toma un número del teclado y lo guarda en ax
+call SCAN_NUM ; Llama a la funcion SCAN_NUM que toma un número del teclado y lo guarda en ax
 mov num1, cx ; Mueve el número a la variable num1
 
-mov ah, 09 ; Interrupción para imprimir en pantalla
+mov ah, 09 ; Interrupcion para imprimir en pantalla
 lea dx, texto2 ; Carga la cadena de texto 2 en dx
 int 21h
 
-call SCAN_NUM ; Llama a la función SCAN_NUM que toma un número del teclado y lo guarda en ax
+call SCAN_NUM ; Llama a la funcion SCAN_NUM que toma un número del teclado y lo guarda en ax
 mov num2, cx ; Mueve el número a la variable num2
 
 ; Suma
@@ -54,7 +54,7 @@ mov ax, num1 ; Mueve el primer número digitado a ax
 sub ax, num2 ; Resta el segundo número del primero, el resultado queda almacenado en ax
 call PRINT_NUM
 
-; Multiplicación
+; Multiplicacion
 mov ah, 09
 lea dx, texto5
 int 21h
@@ -63,11 +63,11 @@ mov bx, num2 ; Mueve el segundo número digitado a bx
 mul bx ; ax = ax * bx
 call PRINT_NUM
 
-; División
+; Division
 mov ah, 09
 lea dx, texto6
 int 21h
-xor dx, dx ; Establece dx en cero; necesario para evitar desbordamiento en la división
+xor dx, dx ; Establece dx en cero; necesario para evitar desbordamiento en la division
 mov ax, num1 ; Mueve el primer número digitado a ax
 mov bx, num2 ; Mueve el segundo número digitado a bx
 div bx ; ax = ax / bx, dx = ax % bx
