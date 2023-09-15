@@ -28,38 +28,38 @@ lea dx, texto ; Carga la cadena de texto 1 en dx
 int 21h ; Interrupcion de pantalla
 
 call SCAN_NUM ; Llama a la funcion SCAN_NUM que toma un número del teclado y lo guarda en ax
-mov num1, cx ; Mueve el número a la variable num1
+mov num1, cx ; Mueve el numero a la variable num1
 
 mov ah, 09 ; Interrupcion para imprimir en pantalla
 lea dx, texto2 ; Carga la cadena de texto 2 en dx
 int 21h
 
 call SCAN_NUM ; Llama a la funcion SCAN_NUM que toma un número del teclado y lo guarda en ax
-mov num2, cx ; Mueve el número a la variable num2
+mov num2, cx ; Mueve el numero a la variable num2
 
 ; Suma
 mov ah, 09
 lea dx, texto3
 int 21h
 
-mov ax, num1 ; Mueve el primer número digitado a ax
-add ax, num2 ; Suma los números digitados, el resultado queda almacenado en ax
+mov ax, num1 ; Mueve el primer numero digitado a ax
+add ax, num2 ; Suma los numeros digitados, el resultado queda almacenado en ax
 call PRINT_NUM
 
 ; Resta
 mov ah, 09
 lea dx, texto4
 int 21h
-mov ax, num1 ; Mueve el primer número digitado a ax
-sub ax, num2 ; Resta el segundo número del primero, el resultado queda almacenado en ax
+mov ax, num1 ; Mueve el primer numero digitado a ax
+sub ax, num2 ; Resta el segundo numero del primero, el resultado queda almacenado en ax
 call PRINT_NUM
 
 ; Multiplicacion
 mov ah, 09
 lea dx, texto5
 int 21h
-mov ax, num1 ; Mueve el primer número digitado a ax
-mov bx, num2 ; Mueve el segundo número digitado a bx
+mov ax, num1 ; Mueve el primer numero digitado a ax
+mov bx, num2 ; Mueve el segundo numero digitado a bx
 mul bx ; ax = ax * bx
 call PRINT_NUM
 
@@ -68,8 +68,8 @@ mov ah, 09
 lea dx, texto6
 int 21h
 xor dx, dx ; Establece dx en cero; necesario para evitar desbordamiento en la division
-mov ax, num1 ; Mueve el primer número digitado a ax
-mov bx, num2 ; Mueve el segundo número digitado a bx
+mov ax, num1 ; Mueve el primer numero digitado a ax
+mov bx, num2 ; Mueve el segundo numero digitado a bx
 div bx ; ax = ax / bx, dx = ax % bx
 call PRINT_NUM
 
